@@ -65,3 +65,55 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # barber-booking-app
+
+## Installation
+
+`composer install`
+
+`cp .env.example .env`
+
+`php artisan migrate`
+
+`php artisan key:generate`
+
+`pnpm install && pnpm run dev`
+
+`php artisan serve`
+
+
+## Step by Step
+
+`composer create-project laravel/laravel barber-booking-app`
+
+`cp .env.example .env`
+
+`php artisan key:generate`
+
+### Login and Register
+`composer require laravel/ui`
+
+`php artisan ui bootstrap --auth`
+* Modificar users migration, User model, RegisterController y la vista register
+* Agregar al AppServiceProvider un método para la Paginación con Bootstrap
+
+### CRUDs
+`composer require ibex/crud-generator --dev`
+
+`php artisan vendor:publish --tag=crud`
+
+
+### Roles and Permissions
+`composer require spatie/laravel-permission`
+
+`php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"`
+
+`php artisan optimize:clear` or `php artisan optimize`
+
+
+
+
+`php artisan migrate`
+
+`pnpm install && pnpm run dev`
+
+`php artisan serve`
