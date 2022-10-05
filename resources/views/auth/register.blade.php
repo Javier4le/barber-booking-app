@@ -18,7 +18,12 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+        <a href="{{ url('/home') }}">
+            <div>
+                <img src="{{ asset('assets/img/BarberLogo.png') }}" alt="BarberLogo" class="brand-image img-circle elevation-3">
+            </div>
+            <b>{{ config('app.name') }}</b>
+        </a>
     </div>
 
     <div class="card">
