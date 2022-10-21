@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserController
@@ -45,7 +46,13 @@ class UserController extends Controller
     {
         request()->validate(User::$rules);
 
-        $user = User::create($request->all());
+
+        $quickpass = "password";
+
+        $input = $request->all();
+        $input['password'] = Hash::make($quickpass);
+
+        $user = User::create($input);
 
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');
@@ -101,9 +108,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id)->delete();
+        if (auth()->user()->id == $id) {
+            return redirect()->route('users.index')
+                ->with('error', 'You cannot delete yourself');
+        } else {
+            $user = User::find($id)->delete();
 
-        return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+            return redirect()->route('users.index')
+                ->with('success', 'User deleted successfully');
+        }
     }
 }

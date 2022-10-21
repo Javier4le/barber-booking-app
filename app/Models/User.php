@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class User
@@ -24,15 +24,15 @@ use Illuminate\Auth\Authenticatable;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class User extends Model implements AuthenticatableContract
+class User extends Authenticatable
 {
-    use Authenticatable;
+    use Notifiable;
 
 
     static $rules = [
-		'first_name' => 'required',
-		'username' => 'required',
-		'email' => 'required',
+        'first_name' => 'required',
+        'username' => 'required',
+        'email' => 'required',
     ];
 
     protected $perPage = 20;
@@ -42,8 +42,22 @@ class User extends Model implements AuthenticatableContract
      *
      * @var array
      */
-    protected $fillable = ['first_name','last_name','phone_number','username','email'];
+    protected $fillable = ['first_name', 'last_name', 'phone_number', 'username', 'email', 'password'];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }

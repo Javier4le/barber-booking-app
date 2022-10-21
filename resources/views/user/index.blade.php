@@ -27,6 +27,10 @@
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
                         </div>
+                    @elseif ($message = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
+                        </div>
                     @endif
 
                     <div class="card-body">
@@ -35,7 +39,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>First Name</th>
 										<th>Last Name</th>
 										<th>Phone Number</th>
@@ -49,7 +53,7 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $user->first_name }}</td>
 											<td>{{ $user->last_name }}</td>
 											<td>{{ $user->phone_number }}</td>
