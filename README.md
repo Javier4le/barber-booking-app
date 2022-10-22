@@ -86,15 +86,26 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 `composer create-project laravel/laravel barber-booking-app`
 
 `cp .env.example .env`
+* Cambiar nombre de App
 
 `php artisan key:generate`
 
-### Login and Register
-`composer require laravel/ui`
 
-`php artisan ui bootstrap --auth`
+### AdminLTE installation
+`composer require infyomlabs/laravel-ui-adminlte`
+
+`php artisan ui adminlte --auth`
+* Corregir importación de estilos y javascript de algunos archivos
 * Modificar users migration, User model, RegisterController y la vista register
 * Agregar al AppServiceProvider un método para la Paginación con Bootstrap
+
+`php artisan migrate`
+
+`npm install && npm run dev`
+
+`php artisan serve`
+
+
 
 ### CRUDs
 `composer require ibex/crud-generator --dev`
@@ -112,8 +123,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
-`php artisan migrate`
 
-`pnpm install && pnpm run dev`
 
-`php artisan serve`

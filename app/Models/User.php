@@ -2,38 +2,53 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * Class User
+ *
+ * @property $id
+ * @property $first_name
+ * @property $last_name
+ * @property $phone_number
+ * @property $username
+ * @property $email
+ * @property $email_verified_at
+ * @property $password
+ * @property $remember_token
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class User extends Authenticatable
 {
-    use HasRoles, HasApiTokens, HasFactory, Notifiable;
+    use Notifiable, HasFactory;
 
+
+    static $rules = [
+        'first_name' => 'required',
+        'username' => 'required',
+        'email' => 'required',
+    ];
+
+    protected $perPage = 20;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributes that should be mass-assignable.
      *
-     * Estos son los campos que se pueden rellenar en el formulario de registro
-     *
-     * @var array<int, string>
+     * @var array
      */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'phone_number',
-        'username',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['first_name', 'last_name', 'phone_number', 'username', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -41,11 +56,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The table associated with the model.
      *
-     * @var array<string, string>
+     * @var string
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $table = 'users';
 }

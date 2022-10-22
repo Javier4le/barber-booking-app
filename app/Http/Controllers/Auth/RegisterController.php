@@ -44,8 +44,6 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * Este método se encarga de validar los datos que se envían en el formulario de registro
-     *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
@@ -54,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['nullable', 'string', 'max:255'],
-            'phone_number' => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'min:9', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -63,8 +61,6 @@ class RegisterController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * Este método se encarga de crear el usuario en la base de datos
      *
      * @param  array  $data
      * @return \App\Models\User
