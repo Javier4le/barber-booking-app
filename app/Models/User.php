@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class User
@@ -27,21 +31,16 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable, HasFactory;
-
-
-    static $rules = [
-        'first_name' => 'required',
-        'username' => 'required',
-        'email' => 'required',
-    ];
-
-    protected $perPage = 20;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * Attributes that should be mass-assignable.
      *
-     * @var array
+     * @var string[]
      */
     protected $fillable = ['first_name', 'last_name', 'phone_number', 'username', 'email', 'password'];
 
@@ -53,12 +52,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
      * The table associated with the model.
      *
-     * @var string
+     * @var array
      */
-    protected $table = 'users';
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

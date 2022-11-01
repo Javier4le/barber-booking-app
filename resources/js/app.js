@@ -1,2 +1,4 @@
-import './bootstrap';
-import 'admin-lte';
+import * as alpine from 'alpinejs/dist/cdn';
+
+
+export { alpine };
