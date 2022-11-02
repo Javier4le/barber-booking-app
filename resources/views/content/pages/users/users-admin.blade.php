@@ -4,9 +4,8 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Home')
+@section('title', 'Usuarios Administradores')
 
 @section('content')
-<h4>Home Page</h4>
-<h4>Cambios desde local</h4>
+<h4>Esta es la página de Usuarios Administradores</h4>
 @endsection

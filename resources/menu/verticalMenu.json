@@ -1,16 +1,50 @@
 {
   "menu": [
     {
-      "url": "/",
-      "name": "Home",
+      "url": "/dashboard",
+      "name": "Panel de Control",
       "icon": "menu-icon tf-icons bx bx-home-circle",
-      "slug": "pages-home"
+      "slug": "dashboard"
     },
     {
-      "url": "/page-2",
-      "icon": "menu-icon tf-icons bx bx-file",
-      "name": "Page 2",
-      "slug": "pages-page-2"
+      "name": "Usuarios",
+      "icon": "menu-icon tf-icons bx bx-group",
+      "slug": "users",
+      "submenu": [
+        {
+          "url": "/users",
+          "name": "Administradores",
+          "slug": "users"
+        },
+        {
+          "url": "/users/barber",
+          "name": "Barberos",
+          "slug": "users-barber"
+        },
+        {
+          "url": "/users/client",
+          "name": "Clientes",
+          "slug": "users-client"
+        }
+      ]
+    },
+    {
+      "url": "/appointments",
+      "icon": "menu-icon tf-icons bx bx-book",
+      "name": "Citas",
+      "slug": "appointments"
+    },
+    {
+      "url": "/services",
+      "icon": "menu-icon tf-icons bx bx-cut",
+      "name": "Servicios",
+      "slug": "services"
+    },
+    {
+      "url": "/premises",
+      "icon": "menu-icon tf-icons bx bx-store",
+      "name": "Locales",
+      "slug": "premises"
     }
   ]
 }
