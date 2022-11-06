@@ -14,7 +14,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('content.pages.appointments');
+        // return view('content.pages.appointments');
+        $appointments = Appointment::all();
+        return view('content.pages.dashboard.appointments', compact('appointments'));
     }
 
     /**

@@ -17,7 +17,7 @@ class UserController extends Controller
     {
       $users = User::all();
       // return view('content.pages.users', ['users' => $users]);
-      return view('content.pages.users.users', compact('users'));
+      return view('content.pages.dashboard.users.users', compact('users'));
     }
 
     /**

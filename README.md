@@ -112,6 +112,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 `php artisan vendor:publish --tag=crud`
 
+`composer require yajra/laravel-datatables-oracle`
+
+`php artisan vendor:publish --tag=datatables`
+
 
 ### Roles and Permissions
 `composer require spatie/laravel-permission`

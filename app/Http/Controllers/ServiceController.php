@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('content.pages.services');
+        return view('content.pages.dashboard.services');
     }
 
     /**

@@ -40,15 +40,23 @@ $controller_path = 'App\Http\Controllers';
 
     Route::get('/dashboard', $controller_path . '\pages\DashboardPage@index')->name('dashboard');
 
+
     // Route::get('/users/admin', $controller_path . '\pages\users\UsersAdmin@index')->name('users-admin');
     // Route::get('/users', $controller_path . '\UserController@index')->name('users');
     Route::resource('users', $controller_path . '\UserController');
+    Route::get('datatable/users', $controller_path . '\DatatableController@users')->name('datatable.users');
 
     Route::get('/users/barber', $controller_path . '\pages\users\UsersBarber@index')->name('users-barber');
     Route::get('/users/client', $controller_path . '\pages\users\UsersClient@index')->name('users-client');
 
     Route::get('/appointments', $controller_path . '\AppointmentController@index')->name('appointments');
+    Route::get('datatable/appointments', $controller_path . '\DatatableController@appointments')->name('datatable.appointments');
+
+
     Route::get('/services', $controller_path . '\ServiceController@index')->name('services');
+    Route::get('datatable/services', $controller_path . '\DatatableController@services')->name('datatable.services');
+
     Route::get('/premises', $controller_path . '\PremiseController@index')->name('premises');
+    Route::get('datatable/premises', $controller_path . '\DatatableController@premises')->name('datatable.premises');
 
 });

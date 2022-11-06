@@ -41,7 +41,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jnotOrDXxUkuAIhF',
+            '_route' => 'generated::WtQHHx0xrPBO73RZ',
           ),
           1 => NULL,
           2 => 
@@ -151,7 +151,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dsHtsZCRNnStiAL8',
+            '_route' => 'generated::AN5Bn3LOwVRrBFrX',
           ),
           1 => NULL,
           2 => 
@@ -208,7 +208,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::l3xnXBESKBqpWP0C',
+            '_route' => 'generated::yKfIlYmxjVefa3KA',
           ),
           1 => NULL,
           2 => 
@@ -281,7 +281,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::0LAys37GLaxxmeoa',
+            '_route' => 'generated::8S7pZA9hiS8LOoLf',
           ),
           1 => NULL,
           2 => 
@@ -411,7 +411,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::aC8P16UpRqM0Ntup',
+            '_route' => 'generated::sH6tMFVD1goQn2yu',
           ),
           1 => NULL,
           2 => 
@@ -450,7 +450,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::sQBIVyWQ79k291TU',
+            '_route' => 'generated::uUuoTkfqXdMTo5o0',
           ),
           1 => NULL,
           2 => 
@@ -489,7 +489,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vzovwSyFG8yHVGTv',
+            '_route' => 'generated::GhuTZqPiFg4n52NC',
           ),
           1 => NULL,
           2 => 
@@ -509,7 +509,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::PcQCgLlukz4Hff4D',
+            '_route' => 'generated::4WwPo6cEfLAD9dKQ',
           ),
           1 => NULL,
           2 => 
@@ -587,7 +587,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::30ECG7ECKiP2k6kC',
+            '_route' => 'generated::CyWyhzoYpx2Isaic',
           ),
           1 => NULL,
           2 => 
@@ -607,7 +607,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Gldx2JbPv1sNmEoK',
+            '_route' => 'generated::2wx7rGI5oxLqC4n5',
           ),
           1 => NULL,
           2 => 
@@ -697,6 +697,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/datatable/users' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'datatable.users',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/appointments' => 
       array (
         0 => 
@@ -704,6 +724,26 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'appointments',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/datatable/appointments' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'datatable.appointments',
           ),
           1 => NULL,
           2 => 
@@ -737,6 +777,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/datatable/services' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'datatable.services',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/premises' => 
       array (
         0 => 
@@ -744,6 +804,26 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'premises',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/datatable/premises' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'datatable.premises',
           ),
           1 => NULL,
           2 => 
@@ -1018,7 +1098,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::jnotOrDXxUkuAIhF' => 
+    'generated::WtQHHx0xrPBO73RZ' => 
     array (
       'methods' => 
       array (
@@ -1041,7 +1121,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jnotOrDXxUkuAIhF',
+        'as' => 'generated::WtQHHx0xrPBO73RZ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1287,7 +1367,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::dsHtsZCRNnStiAL8' => 
+    'generated::AN5Bn3LOwVRrBFrX' => 
     array (
       'methods' => 
       array (
@@ -1309,7 +1389,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dsHtsZCRNnStiAL8',
+        'as' => 'generated::AN5Bn3LOwVRrBFrX',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1401,7 +1481,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::l3xnXBESKBqpWP0C' => 
+    'generated::yKfIlYmxjVefa3KA' => 
     array (
       'methods' => 
       array (
@@ -1424,7 +1504,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::l3xnXBESKBqpWP0C',
+        'as' => 'generated::yKfIlYmxjVefa3KA',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1556,7 +1636,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::0LAys37GLaxxmeoa' => 
+    'generated::8S7pZA9hiS8LOoLf' => 
     array (
       'methods' => 
       array (
@@ -1579,7 +1659,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::0LAys37GLaxxmeoa',
+        'as' => 'generated::8S7pZA9hiS8LOoLf',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1832,7 +1912,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::aC8P16UpRqM0Ntup' => 
+    'generated::sH6tMFVD1goQn2yu' => 
     array (
       'methods' => 
       array (
@@ -1855,7 +1935,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::aC8P16UpRqM0Ntup',
+        'as' => 'generated::sH6tMFVD1goQn2yu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1911,7 +1991,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::sQBIVyWQ79k291TU' => 
+    'generated::uUuoTkfqXdMTo5o0' => 
     array (
       'methods' => 
       array (
@@ -1932,7 +2012,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
-        'as' => 'generated::sQBIVyWQ79k291TU',
+        'as' => 'generated::uUuoTkfqXdMTo5o0',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2042,7 +2122,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vzovwSyFG8yHVGTv' => 
+    'generated::GhuTZqPiFg4n52NC' => 
     array (
       'methods' => 
       array (
@@ -2054,7 +2134,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::vzovwSyFG8yHVGTv',
+        'as' => 'generated::GhuTZqPiFg4n52NC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2070,7 +2150,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::PcQCgLlukz4Hff4D' => 
+    'generated::4WwPo6cEfLAD9dKQ' => 
     array (
       'methods' => 
       array (
@@ -2082,7 +2162,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::PcQCgLlukz4Hff4D',
+        'as' => 'generated::4WwPo6cEfLAD9dKQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2207,7 +2287,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::30ECG7ECKiP2k6kC' => 
+    'generated::CyWyhzoYpx2Isaic' => 
     array (
       'methods' => 
       array (
@@ -2224,13 +2304,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:295:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000074a0000000000000000";}";s:4:"hash";s:44:"wB+/reYq7SUIEiv3xk/PpHFeuhJeAgCMflw5n5bYWRE=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000007560000000000000000";}";s:4:"hash";s:44:"twpdLxmT4BA6GRkAQ843xUogVZ6tzBR06R7okuD6eak=";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::30ECG7ECKiP2k6kC',
+        'as' => 'generated::CyWyhzoYpx2Isaic',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2246,7 +2326,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Gldx2JbPv1sNmEoK' => 
+    'generated::2wx7rGI5oxLqC4n5' => 
     array (
       'methods' => 
       array (
@@ -2262,13 +2342,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:291:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:73:"function(\\Illuminate\\Http\\Request $request){
   echo("Esto es el home");
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000074c0000000000000000";}";s:4:"hash";s:44:"YYNsT1A6IXUHJHQoWWLlh/JrCY0cuXyw3M5tr3E9HtI=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000007580000000000000000";}";s:4:"hash";s:44:"D+sUzHS55ZQI/oTM6+Tu8xTslhvzzZBke/ZyKxAChls=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::Gldx2JbPv1sNmEoK',
+        'as' => 'generated::2wx7rGI5oxLqC4n5',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2602,6 +2682,46 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'datatable.users' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'datatable/users',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\DatatableController@users',
+        'controller' => 'App\\Http\\Controllers\\DatatableController@users',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'datatable.users',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'users-barber' => 
     array (
       'methods' => 
@@ -2722,6 +2842,46 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'datatable.appointments' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'datatable/appointments',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\DatatableController@appointments',
+        'controller' => 'App\\Http\\Controllers\\DatatableController@appointments',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'datatable.appointments',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'services' => 
     array (
       'methods' => 
@@ -2762,6 +2922,46 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'datatable.services' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'datatable/services',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\DatatableController@services',
+        'controller' => 'App\\Http\\Controllers\\DatatableController@services',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'datatable.services',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'premises' => 
     array (
       'methods' => 
@@ -2787,6 +2987,46 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'premises',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'datatable.premises' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'datatable/premises',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:sanctum',
+          2 => 'Laravel\\Jetstream\\Http\\Middleware\\AuthenticateSession',
+          3 => 'verified',
+        ),
+        'uses' => 'App\\Http\\Controllers\\DatatableController@premises',
+        'controller' => 'App\\Http\\Controllers\\DatatableController@premises',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'datatable.premises',
       ),
       'fallback' => false,
       'defaults' => 
