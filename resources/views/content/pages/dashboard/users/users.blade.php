@@ -17,10 +17,18 @@
     <h4 class="py-3 breadcrumb-wrapper mb-4">
         <span class="text-muted fw-light">Usuarios /</span> Administradores
     </h4>
-
     <div class="card">
+      <div class="card-header border-bottom">
+        <h5 class="card-title">Filtro de búsqueda</h5>
+        <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
+          <div class="col-md-4 user_role"></div>
+        </div>
+      </div>
+      <div class="card-datatable table-responsive">
+        <table class="datatables-users table border-top" id="users-table">
+    {{-- <div class="card">
       <div class="card-datatable table-responsive pt-0">
-        <table class="datatables-basic table table-bordered" id="users-table">
+        <table class="datatables-basic table table-bordered" id="users-table"> --}}
           <thead>
             <tr>
               <th></th>
@@ -31,6 +39,7 @@
               <th>Teléfono</th>
               <th>Usuario</th>
               <th>Correo</th>
+              {{-- <th>Rol</th> --}}
               <th>Fecha de creación</th>
               <th>Acciones</th>
             </tr>

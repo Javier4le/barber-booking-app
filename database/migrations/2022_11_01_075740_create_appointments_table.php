@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('premise_id');
-            $table->foreign('premise_id')->references('id')->on('premises');
+            $table->foreign('premise_id')->references('id')->on('premises')->onDelete('cascade');
 
             $table->date('date');
             $table->time('time');

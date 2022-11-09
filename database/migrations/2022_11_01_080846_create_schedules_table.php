@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->date('weekday');
-            $table->time('start');
-            $table->time('end');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }

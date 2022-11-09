@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
+use App\Models\AppointmentServiceBarber;
 use App\Models\Premise;
 use App\Models\Service;
 use App\Models\User;
@@ -18,7 +18,11 @@ class DatatableController extends Controller
 
   public function appointments()
   {
-    $appointments = Appointment::all();
+    $appointments = AppointmentServiceBarber::all();
+    $appointments->load('appointment', 'appointment.user' , 'appointment.premise' , 'service' , 'barber');
+
+    // $appointments->load('user', 'service', 'premise');
+
     return datatables()->of($appointments)->toJson();
   }
 

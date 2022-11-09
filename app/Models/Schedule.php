@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = ['weekday', 'start_time', 'end_time'];
+
 }

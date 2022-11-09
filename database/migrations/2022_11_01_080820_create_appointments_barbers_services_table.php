@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('appointment_id');
-            $table->foreign('appointment_id')->references('id')->on('appointments');
+            $table->foreign('appointment_id')->references('id')->on('appointments')->onDelete('cascade');
 
             $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
 
             $table->unsignedBigInteger('barber_id');
-            $table->foreign('barber_id')->references('id')->on('barbers');
+            $table->foreign('barber_id')->references('id')->on('barbers')->onDelete('cascade');
 
             $table->integer('total_price');
             $table->timestamps();

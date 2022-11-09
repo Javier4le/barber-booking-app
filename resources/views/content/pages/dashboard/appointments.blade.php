@@ -26,6 +26,10 @@
               <th>Id</th>
               <th>Fecha</th>
               <th>Hora</th>
+              <th>Cliente</th>
+              <th>Servicio</th>
+              <th>Barbero</th>
+              <th>Local</th>
               <th>Fecha de creación</th>
               <th>Acciones</th>
             </tr>

@@ -15,4 +15,14 @@ class Appointment extends Model
      * @var string[]
      */
     protected $fillable = ['date', 'time'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function premise()
+    {
+        return $this->belongsTo(Premise::class);
+    }
 }
