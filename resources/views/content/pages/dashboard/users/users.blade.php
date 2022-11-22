@@ -34,12 +34,12 @@
               <th></th>
               <th></th>
               <th>Id</th>
+              <!-- <th>Rol</th> -->
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Teléfono</th>
               <th>Usuario</th>
               <th>Correo</th>
-              {{-- <th>Rol</th> --}}
               <th>Fecha de creación</th>
               <th>Acciones</th>
             </tr>

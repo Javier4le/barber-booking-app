@@ -37,15 +37,23 @@ $containerNav = $containerNav ?? 'container-fluid';
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
       <!-- Style Switcher -->
-      <div class="navbar-nav align-items-center">
+      <div class="navbar-nav align-items-center me-auto p-2">
         <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
           <i class='bx bx-sm'></i>
         </a>
       </div>
       <!--/ Style Switcher -->
 
-      <ul class="navbar-nav flex-row align-items-center ms-auto">
+      <!-- Home -->
+      <div class="navbar-nav align-items-center p-2">
+        <a type="button" class="nav-link hide-arrow d-flex flex-nowrap justify-content-around" href="{{ route('home') }}">
+          <i class="bx bx-home bx-sm" aria-hidden="true"></i>
+          <label class="d-none d-sm-block align-middle">Home</label>
+        </a>
+      </div>
+      <!--/ Home -->
 
+      <ul class="navbar-nav flex-row align-items-center p-2">
         <!-- User -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">

@@ -36,7 +36,7 @@ $customizerHidden = 'customizer-hide';
         <div class="card-body">
           <!-- Logo -->
           <div class="app-brand justify-content-center">
-            <a href="{{url('/dashboard')}}" class="app-brand-link gap-2">
+            <a href="{{url('/')}}" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
                 @include('_partials.macros')
               </span>
@@ -47,7 +47,7 @@ $customizerHidden = 'customizer-hide';
           <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
           <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-          <form id="formAuthentication" class="mb-3" action="{{url('/dashboard')}}" method="GET">
+          <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
             <div class="mb-3">
               <label for="email" class="form-label">Email or Username</label>
               <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus>
