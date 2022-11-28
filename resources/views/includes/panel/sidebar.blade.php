@@ -28,7 +28,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="./examples/login.html">
+        <a class="nav-link" href="{{ url('/dashboard/locations') }}">
             <i class="ni ni-shop text-info"></i> Locales
         </a>
     </li>
