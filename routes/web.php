@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,14 +25,14 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 
 
-// Rutas para el CRUD de Locations
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Rutas para el CRUD de Locations
+    Route::resource('dashboard/locations', App\Http\Controllers\Admin\LocationController::class);
 
-Route::resource('dashboard/locations', App\Http\Controllers\LocationController::class);
+    // Rutas para el CRUD de Barberos
+    Route::resource('dashboard/barbers', App\Http\Controllers\Admin\BarberController::class);
 
-// Route::get('/dashboard/locations', [App\Http\Controllers\LocationController::class, 'index']);
+    // Rutas para el CRUD de Clientes
+    Route::resource('dashboard/clients', App\Http\Controllers\Admin\ClientController::class);
+});
 
-// Route::get('/dashboard/locations/create', [App\Http\Controllers\LocationController::class, 'create']);
-// Route::get('/dashboard/locations/{location}/edit', [App\Http\Controllers\LocationController::class, 'edit']);
-// Route::post('/dashboard/locations', [App\Http\Controllers\LocationController::class, 'store']);
-// Route::put('/dashboard/locations/{location}', [App\Http\Controllers\LocationController::class, 'update']);
-// Route::delete('/dashboard/locations/{location}', [App\Http\Controllers\LocationController::class, 'destroy']);

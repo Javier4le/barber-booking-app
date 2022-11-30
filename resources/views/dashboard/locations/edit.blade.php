@@ -10,9 +10,8 @@
                 <h3 class="mb-0">Editar local</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ url('/dashboard/locations') }}" class="btn btn-sm btn-success">
-                    <i class="fas fa-chevron-left"></i>
-                    Regresar
+                <a href="{{ route('locations.index') }}" class="btn btn-sm btn-success">
+                    <i class="fas fa-chevron-left"></i> Regresar
                 </a>
             </div>
         </div>
@@ -37,7 +36,7 @@
             </div>
             @endforeach -->
         @endif
-        <form action="{{ url('/dashboard/locations/'.$location->id) }}" method="POST">
+        <form action="{{ route('locations.update', $location->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">

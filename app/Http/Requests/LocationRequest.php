@@ -26,7 +26,8 @@ class LocationRequest extends FormRequest
         return [
             'name' => 'max:100',
             'address' => 'required|max:100',
-            'phone' => 'required|numeric|digits:9',
+            // 'phone' => 'required|numeric|digits:9',
+            'phone' => 'required|numeric|regex:/\+569[0-9]{8}/',
         ];
     }
 
@@ -47,7 +48,8 @@ class LocationRequest extends FormRequest
 
             'phone.required' => 'Es necesario ingresar un número de teléfono',
             'phone.numeric' => 'El campo de teléfono debe ser numérico',
-            'phone.digits' => 'El número de teléfono debe tener 9 dígitos',
+            // 'phone.digits' => 'El número de teléfono debe tener 9 dígitos',
+            'phone.regex' => 'El número de teléfono debe tener el formato +569XXXXXXXX',
         ];
     }
 }

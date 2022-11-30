@@ -21,10 +21,11 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'phone_number',
+        'phone',
         'username',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -45,4 +46,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the role that owns the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    /**
+     * Scope a query to only include users of a given role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $role
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBarbers($query)
+    {
+        return $query->where('role_id', 2);
+    }
+
+    /**
+     * Scope a query to only include users of a given role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $role
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeClients($query)
+    {
+        return $query->where('role_id', 3);
+    }
+
+    /**
+     * Check multiple roles
+     * @param array $roles
+     */
+    public function hasRoles($roles)
+    {
+        return null !== $this->role()->whereIn('name', $roles)->first();
+    }
 }
