@@ -1,3 +1,7 @@
+<?php
+    use Illuminate\Support\Str;
+?>
+
 @extends('layouts.panel')
 
 @section('title', 'Panel de Control')
@@ -7,10 +11,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Nuevo local</h3>
+                <h3 class="mb-0">Nuevo Barbero</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('locations.index') }}" class="btn btn-sm btn-success">
+                <a href="{{ route('barbers.index') }}" class="btn btn-sm btn-success">
                     <i class="fas fa-chevron-left"></i> Regresar
                 </a>
             </div>
@@ -36,19 +40,31 @@
             </div>
             @endforeach -->
         @endif
-        <form action="{{ route('locations.store') }}" method="POST">
+        <form action="{{ route('barbers.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name">Nombre del local</label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control" placeholder="Nombre del local">
+                <label for="first_name">Nombre</label>
+                <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" class="form-control" placeholder="Nombre del barbero" required>
             </div>
             <div class="form-group">
-                <label for="address">Dirección</label>
-                <input type="text" name="address" id="address" value="{{ old('address') }}" class="form-control" placeholder="Dirección" required>
+                <label for="last_name">Apellido</label>
+                <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" class="form-control" placeholder="Apellido del barbero">
             </div>
             <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="text" name="phone" id="phone"  value="{{ old('phone') }}" class="form-control" placeholder="Teléfono" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" name="username" id="username" value="{{ old('username') }}" class="form-control" placeholder="Nombre de usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo</label>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control" placeholder="Correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="text" name="password" id="password" value="{{ old('password', Str::random(8)) }}" class="form-control" placeholder="Contraseña" required>
             </div>
             <button type="submit" class="btn btn-primary">Crear</button>
         </form>

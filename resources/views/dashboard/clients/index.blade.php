@@ -7,11 +7,11 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Locales</h3>
+                <h3 class="mb-0">Clientes</h3>
             </div>
             <div class="col text-right">
-                <a href="{{ route('locations.create') }}" class="btn btn-sm btn-success">
-                    <i class="fas fa-plus"></i> Nuevo Local
+                <a href="{{ route('clients.create') }}" class="btn btn-sm btn-success">
+                    <i class="fas fa-plus"></i> Nuevo Cliente
                 </a>
             </div>
         </div>
@@ -30,22 +30,26 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Dirección</th>
+                    <th scope="col">Apellido</th>
                     <th scope="col">Teléfono</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Correo</th>
                     <th scope="col">Creado</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($locations as $location)
+                @foreach ($clients as $client)
                 <tr>
-                    <th scope="row">{{ $location->name }}</th>
-                    <td>{{ $location->address }}</td>
-                    <td>{{ $location->phone }}</td>
-                    <td>{{ $location->created_at }}</td>
+                    <th scope="row">{{ $client->first_name }}</th>
+                    <td>{{ $client->last_name }}</td>
+                    <td>{{ $client->phone }}</td>
+                    <td>{{ $client->username }}</td>
+                    <td>{{ $client->email }}</td>
+                    <td>{{ $client->created_at }}</td>
                     <td>
-                        <a href="{{ route('locations.edit', $location->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                        <form action="{{ route('locations.destroy', $location->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                        <form action="{{ route('clients.destroy', $client->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
@@ -55,6 +59,11 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="card-body">
+        <nav class="d-flex justify-content-center" aria-label="...">
+            {{ $clients->links() }}
+        </nav>
     </div>
 </div>
 @endsection

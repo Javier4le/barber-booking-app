@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Location;
 use App\Http\Requests\LocationRequest;
+use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -139,7 +135,7 @@ class LocationController extends Controller
     {
         $location->delete();
 
-        $notification = 'El local '.$location->name.' se ha eliminado correctamente';
+        $notification = "El local $location->name se ha eliminado correctamente";
 
         // return redirect('/dashboard/locations')->with(compact('notification'));
         return redirect()->route('locations.index')->with(compact('notification'));
