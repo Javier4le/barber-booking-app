@@ -51,7 +51,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="{{ url('/dashboard/barber/schedules') }}">
                 <i class="ni ni-calendar-grid-58 text-primary"></i> Gestionar horario
             </a>
         </li>
