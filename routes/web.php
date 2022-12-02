@@ -36,3 +36,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('dashboard/clients', App\Http\Controllers\Admin\ClientController::class);
 });
 
+
+Route::middleware(['auth', 'barber'])->group(function () {
+    // Rutas para horas de Barberos
+    Route::get('/dashboard/barber/schedules', [App\Http\Controllers\Barber\ScheduleController::class, 'edit']);
+    Route::post('/dashboard/barber/schedules', [App\Http\Controllers\Barber\ScheduleController::class, 'store']);
+});
+
