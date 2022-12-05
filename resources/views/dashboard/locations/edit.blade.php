@@ -7,7 +7,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Editar local</h3>
+                <h3 class="mb-0">Editar Local</h3>
             </div>
             <div class="col text-right">
                 <a href="{{ route('locations.index') }}" class="btn btn-sm btn-success">
@@ -49,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Teléfono</label>
-                <input type="text" name="phone" id="phone"  value="{{ old('phone', $location->phone) }}" class="form-control" placeholder="Teléfono" required>
+                <input type="text" name="phone" id="phone" value="{{ old('phone', $location->phone) }}" class="form-control" placeholder="Teléfono" required>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>

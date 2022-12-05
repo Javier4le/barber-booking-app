@@ -30,7 +30,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="{{ url('/dashboard/services') }}">
                 <i class="ni ni-briefcase-24 text-blue"></i> Servicios
             </a>
         </li>

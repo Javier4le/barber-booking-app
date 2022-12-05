@@ -29,6 +29,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Rutas para el CRUD de Locations
     Route::resource('dashboard/locations', App\Http\Controllers\Admin\LocationController::class);
 
+    // Rutas para el CRUD de Services
+    Route::resource('dashboard/services', App\Http\Controllers\Admin\ServiceController::class);
+
     // Rutas para el CRUD de Barberos
     Route::resource('dashboard/barbers', App\Http\Controllers\Admin\BarberController::class);
 
