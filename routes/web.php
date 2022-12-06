@@ -58,6 +58,10 @@ Route::middleware('auth')->group(function () {
     // Route::get('/api/location/{location}/services', [App\Http\Controllers\Api\LocationController::class, 'services']);
 
     // JSON para obtener los barberos de un local y servicio seleccionado
+    Route::get('/api/services/{service}/barbers', [App\Http\Controllers\Api\ServiceController::class, 'barbers']);
+    // Route::get('/api/locations/{location}/services/{service}/barbers', [App\Http\Controllers\Api\LocationController::class, 'barbers']);
+
+    Route::get('/api/schedule/hours', [App\Http\Controllers\Api\ScheduleController::class, 'hours']);
 
 
 
