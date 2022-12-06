@@ -8,6 +8,8 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Location;
+use App\Models\Service;
 
 class BarberController extends Controller
 {
@@ -36,7 +38,10 @@ class BarberController extends Controller
      */
     public function create()
     {
-        return view('dashboard.barbers.create');
+        $locations = Location::all();
+        $services = Service::all();
+
+        return view('dashboard.barbers.create', compact('services', 'locations'));
     }
 
     /**
@@ -49,13 +54,16 @@ class BarberController extends Controller
     {
         $validated = $request->validated();
 
-        User::create(
+        $barber = User::create(
             $request->only('first_name', 'last_name', 'phone', 'username', 'email') + [
                 //'password' => bcrypt($request->password),
                 'password' => bcrypt($request->input('password')),
                 'role_id' => 2,
+                'location_id' => $request['location']
             ]
         );
+
+        $barber->services()->attach($request->input('services'));
 
         $notification = 'El barbero se ha registrado correctamente.';
 
@@ -82,8 +90,11 @@ class BarberController extends Controller
     public function edit($id)
     {
         $barber = User::barbers()->findOrFail($id);
+        $locations = Location::all();
+        $services = Service::all();
+        $barberServices = $barber->services()->pluck('services.id');
 
-        return view('dashboard.barbers.edit', compact('barber'));
+        return view('dashboard.barbers.edit', compact('barber', 'locations', 'services', 'barberServices'));
     }
 
     /**
@@ -95,19 +106,25 @@ class BarberController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
+        // dd($request['location']);
+
         $validated = $request->validated();
 
-        $user = User::barbers()->findOrFail($id);
+        $barber = User::barbers()->findOrFail($id);
 
         $data = $request->only('first_name', 'last_name', 'phone', 'username', 'email');
         $password = $request->input('password');
+        $location = $request['location'];
 
         if ($password) {
             $data['password'] = bcrypt($password);
         }
 
-        $user->fill($data);
-        $user->save();
+        $data['location_id'] = $location;
+
+        $barber->fill($data);
+        $barber->save();
+        $barber->services()->sync($request->input('services'));
 
         $notification = 'El barbero se ha actualizado correctamente.';
 

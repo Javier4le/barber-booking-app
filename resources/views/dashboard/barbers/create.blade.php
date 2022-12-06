@@ -4,6 +4,11 @@
 
 @extends('layouts.panel')
 
+@section('styles')
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+@endsection
+
 @section('title', 'Panel de Control')
 
 @section('content')
@@ -51,6 +56,24 @@
                 <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" class="form-control" placeholder="Apellido del barbero">
             </div>
             <div class="form-group">
+                <label for="location">Local</label>
+                <select name="location" id="location" class="form-control" required>
+                    <option value="">Seleccione un local</option>
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ "$location->name ($location->address)" }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="services">Servicios</label>
+                <select name="services[]" id="services" class="form-control selectpicker" data-style="btn btn-primary" multiple data-actions-box="true" title="Seleccione uno o más servicios" required>
+                    @foreach ($services as $service)
+                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="text" name="phone" id="phone"  value="{{ old('phone') }}" class="form-control" placeholder="Teléfono" required>
             </div>
@@ -70,4 +93,9 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 @endsection
