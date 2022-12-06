@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="barber">Barbero</label>
                 <select name="barber_id" id="barber" class="form-control" required>
-                    <!-- <option value="">Seleccione un barbero</option> -->
+                    <option value="">Seleccione un barbero</option>
                 </select>
             </div>
             <div class="form-group">
@@ -81,14 +81,20 @@
             </div>
             <div class="form-group">
                 <label for="time">Hora de atención</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                <!-- <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                </div> -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="m-3" id="title-morning"></h4>
+                            <div id="hours-morning"></div>
+                        </div>
+                        <div class="col">
+                            <h4 class="m-3" id="title-afternoon"></h4>
+                            <div id="hours-afternoon"></div>
+                        </div>
                     </div>
-                    <input type="text" name="time" id="time" class="form-control timepicker"
-                        value="{{ old('time', '08:00') }}" data-date-format="hh:ii"
-                        data-date-start-date="08:00" data-date-end-date="18:00"
-                        placeholder="Seleccionar hora" required>
                 </div>
             </div>
 
@@ -101,67 +107,5 @@
 
 @section('scripts')
     <script src=" {{ asset('assets/js/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }} "></script>
-    <script>
-        let $barber;
-
-        // cargar barberos por local y servicio
-        $('#location').on('change', function() {
-            let location_id = $(this).val();
-            let service_id = $('#service').val();
-
-            if (location_id && service_id) {
-                $.get(`/api/locations/${location_id}/services/${service_id}/barbers`, function(data) {
-                    let htmlOptions = '<option value="">Seleccione un barbero</option>';
-                    data.forEach(barber => {
-                        htmlOptions +=  `<option value="${barber.id}">${barber.first_name} ${barber.last_name ?? ''}</option>`;
-                    });
-                    $barber.html(htmlOptions);
-                });
-            }
-        });
-
-
-
-        // // cargar barberos por servicio y local
-        // $('#service').on('change', function() {
-        //     let service_id = $(this).val();
-        //     let local_id = $('#local').val();
-
-        //     if (service_id && local_id) {
-        //         $.get('/api/locations/' + local_id + '/services/' + service_id + '/barbers', function(data) {
-        //             let htmlOptions = '<option value="">Seleccione un barbero</option>';
-        //             data.forEach(barber => {
-        //                 htmlOptions +=  `<option value="${barber.id}">${barber.first_name} ${barber.last_name ?? ''}</option>`;
-        //             });
-        //             $barber.html(htmlOptions);
-        //         });
-        //     }
-        // });
-
-
-        // $(function() {
-        //     const $service = $('#service');
-        //     const $location = $('#location');
-        //     $barber = $('#barber');
-
-        //     $service.change(() => {
-        //         const serviceId = $service.val();
-        //         const locationId = $location.val();
-        //         // const url = `/dashboard/client/${serviceId}/barbers`;
-        //         const url = `/api/services/${serviceId}/barbers`;
-        //         $.getJSON(url, onBarbersLoaded);
-        //     });
-
-        // })
-
-        // function onBarbersLoaded(barbers) {
-        //     let htmlOptions = '';
-
-        //     barbers.forEach(barber => {
-        //         htmlOptions += `<option value="${barber.id}">${barber.first_name} ${barber.last_name ?? ''}</option>`;
-        //     });
-
-        //     $barber.html(htmlOptions);
-        // }
-    </script>
+    <script src=" {{ asset('assets/js/appointments/create.js') }} "></script>
 @endsection
