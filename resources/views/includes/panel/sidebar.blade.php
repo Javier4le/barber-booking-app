@@ -57,12 +57,12 @@
         </li>
     @elseif (auth()->user()->hasRoles(['client']))
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="{{ url('/dashboard/client/appointments') }}">
                 <i class="ni ni-calendar-grid-58 text-primary"></i> Reservar cita
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link " href="{{ url('/dashboard/client/appointments') }}">
                 <i class="fas fa-clock text-info"></i> Mis citas
             </a>
         </li>

@@ -24,6 +24,25 @@ class UserSeeder extends Seeder
             'role_id' => 1,
         ]);
 
+        User::create([
+            'first_name' => 'Barber',
+            'phone' => '+56912345678',
+            'username' => 'barber',
+            'email' => 'barber@email.com',
+            'password' => bcrypt('password'),
+            'role_id' => 2,
+            'location_id' => rand(1, 3),
+        ]);
+
+        User::create([
+            'first_name' => 'Client',
+            'phone' => '+56912345678',
+            'username' => 'client',
+            'email' => 'client@email.com',
+            'password' => bcrypt('password'),
+            'role_id' => 3,
+        ]);
+
         User::factory()
             ->count(20)
             ->create();

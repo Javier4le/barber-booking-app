@@ -26,6 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'location_id',
     ];
 
     /**
@@ -36,6 +37,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'pivot',
     ];
 
     /**
@@ -53,6 +55,22 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    /**
+     * Get the location that owns the user.
+     */
+    public function locations()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+
+    /**
+     * Get the services for the user.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class)->withTimestamps();
     }
 
     /**

@@ -50,21 +50,15 @@
             <div class="form-group">
                 <label for="duration">Duración</label>
                 <select name="duration" id="duration" class="form-control">
-                    </option>
-                    @for ($i = 5; $i <= 115; $i +=5)
+                    @for ($i = 5; $i <= 125; $i +=5)
                         @if ($i < 60)
-                            <option value="{{ $i }}" {{ $service->duration == $i ? 'selected' : '' }}>
-                                {{ $i }} min.
-                            </option>
+                            <option value="{{ $i }}" {{ old('duration', $service->duration) == $i ? 'selected' : '' }}>{{ $i }} min.</option>
+                        @elseif ($i < 120)
+                            <option value="{{ $i }}" {{ old('duration', $service->duration) == $i ? 'selected' : '' }}>1{{ $i - 60 < 5 ? " hr." : " hr. " . $i - 60 . " min." }}</option>
                         @else
-                            <option value="{{ $i }}" {{ $service->duration == $i ? 'selected' : '' }}>
-                                1:{{ ($i >= 70 ? $i - 60 : '0' . $i - 60) }} hrs.
-                            </option>
+                            <option value="{{ $i }}" {{ old('duration', $service->duration) == $i ? 'selected' : '' }}>2 hr.</option>
                         @endif
                     @endfor
-                    <option value="120" {{ $service->duration == 120 ? 'selected' : '' }}>
-                        2:00 hrs.
-                    </option>
                 </select>
             </div>
             <div class="form-group">

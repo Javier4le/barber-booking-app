@@ -46,3 +46,24 @@ Route::middleware(['auth', 'barber'])->group(function () {
     Route::post('/dashboard/barber/schedules', [App\Http\Controllers\Barber\ScheduleController::class, 'store']);
 });
 
+
+Route::middleware('auth')->group(function () {
+    // Rutas para reservar citas
+    Route::get('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'create']);
+    Route::post('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'store']);
+
+    // JSON para obtener los barberos de un local y servicio seleccionado
+    // Route::get('/dashboard/client/{service}/barbers', [\App\Http\Controllers\Api\ServiceController::class, 'barbers']);
+    // Route::get('/api/services/{service}/barbers', [App\Http\Controllers\Api\ServiceController::class, 'barbers']);
+    // Route::get('/api/location/{location}/services', [App\Http\Controllers\Api\LocationController::class, 'services']);
+
+    // JSON para obtener los barberos de un local y servicio seleccionado
+
+
+
+
+
+
+
+});
+

@@ -21,9 +21,11 @@ class ServiceController extends Controller
             if ($service->duration < 60) {
                 $service->duration = $service->duration . " min.";
             } else if ($service->duration < 120) {
-                $service->duration = "1:" . (($service->duration - 60 < 10) ? "0" . ($service->duration - 60) : ($service->duration - 60)) . " hrs.";
+                // $service->duration = "1:" . (($service->duration - 60 < 10) ? "0" . ($service->duration - 60) : ($service->duration - 60)) . " hrs.";
+                $service->duration = "1" . (($service->duration - 60 < 10) ? " hr." : " hr. " . ($service->duration - 60) . " min." );
             } else {
-                $service->duration = "2:" . (($service->duration - 120 < 10) ? "0" . ($service->duration - 120) : ($service->duration - 120)) . " hrs.";
+                // $service->duration = "2:" . (($service->duration - 120 < 10) ? "0" . ($service->duration - 120) : ($service->duration - 120)) . " hrs.";
+                $service->duration = "2" . (($service->duration - 120 < 10) ? " hr." : " hr. " . ($service->duration - 120) . " min." );
             }
         }
 
