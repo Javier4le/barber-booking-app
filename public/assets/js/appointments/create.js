@@ -72,8 +72,8 @@ function displayHours(data) {
         });
     }
 
-    if (!htmlHoursMorning != '') {
-        htmlHoursMorning = noHours;
+    if (!htmlHoursMorning != "") {
+        htmlHoursMorning += noHours;
     }
 
     if (data.afternoon) {
@@ -84,8 +84,8 @@ function displayHours(data) {
         });
     }
 
-    if (!htmlHoursAfternoon != '') {
-        htmlHoursAfternoon = noHours;
+    if (!htmlHoursAfternoon != "") {
+        htmlHoursAfternoon += noHours;
     }
 
 
@@ -100,7 +100,7 @@ function getRadioIntervalHTML(interval) {
     const text = `${interval.start} - ${interval.end}`;
 
     return `<div class="custom-control custom-radio m-3">
-                <input type="radio" id="interval_${iRadio}" name="interval" class="custom-control-input" value="${interval.id}">
+                <input type="radio" id="interval_${iRadio}" name="scheduled_time" value="${interval.start}" class="custom-control-input" required>
                 <label class="custom-control-label" for="interval_${iRadio++}">${text}</label>
             </div>`;
 }
