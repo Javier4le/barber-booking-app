@@ -57,7 +57,7 @@
         </li>
     @elseif (auth()->user()->hasRoles(['client']))
         <li class="nav-item">
-            <a class="nav-link " href="{{ url('/dashboard/client/appointments') }}">
+            <a class="nav-link " href="{{ route('appointments.create') }}">
                 <i class="ni ni-calendar-grid-58 text-primary"></i> Reservar cita
             </a>
         </li>

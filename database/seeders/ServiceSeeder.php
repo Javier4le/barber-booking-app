@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -54,8 +55,14 @@ class ServiceSeeder extends Seeder
             ],
         ];
 
-        foreach ($services as $service) {
-            Service::create($service);
+        foreach ($services as $serviceName) {
+            $service = Service::create($serviceName);
+
+            $service->users()->saveMany(
+                User::factory(rand(1, 4))->state(['role_id' => 2])->make()
+            );
+
+            User::find(2)->services()->save($service);
         }
     }
 }

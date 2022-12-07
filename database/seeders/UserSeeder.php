@@ -45,6 +45,7 @@ class UserSeeder extends Seeder
 
         User::factory()
             ->count(20)
+            ->state(['role_id' => 3 ])
             ->create();
     }
 }
