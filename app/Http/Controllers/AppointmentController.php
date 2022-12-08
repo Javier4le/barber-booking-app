@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AppointmentRequest;
 use App\Interfaces\ScheduleServiceInterface;
 use App\Models\Appointment;
+use App\Models\CancelledAppointment;
 use App\Models\Location;
 use App\Models\Service;
 use App\Models\User;
@@ -22,8 +23,55 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+
+        // Consulta para obtener el estado de la cita segun el rol del usuario
+        $role = auth()->user()->role->name;
+
+        if ($role == 'admin') {
+            $confirmedAppointments = Appointment::all()
+                ->where('status', 'Confirmada');
+
+            $pendingAppointments = Appointment::all()
+                ->where('status', 'Reservada');
+
+            $oldAppointments = Appointment::all()
+                ->whereIn('status', ['Atendida', 'No asistió', 'Cancelada']);
+                // ->whereIn('status', ['Atendida', 'Cancelada']);
+
+        } elseif ($role == 'barber') {
+            $confirmedAppointments = Appointment::all()
+                ->where('status', 'Confirmada')
+                ->where('barber_id', auth()->user()->id);
+
+            $pendingAppointments = Appointment::all()
+                ->where('status', 'Reservada')
+                ->where('barber_id', auth()->user()->id);
+
+            $oldAppointments = Appointment::all()
+                ->whereIn('status', ['Atendida', 'No asistió', 'Cancelada'])
+                // ->whereIn('status', ['Atendida', 'Cancelada'])
+                ->where('barber_id', auth()->user()->id);
+
+        } elseif($role == 'client') {
+            $confirmedAppointments = Appointment::all()
+                ->where('status', 'Confirmada')
+                ->where('client_id', auth()->user()->id);
+
+            $pendingAppointments = Appointment::all()
+                ->where('status', 'Reservada')
+                ->where('client_id', auth()->user()->id);
+
+            $oldAppointments = Appointment::all()
+                ->whereIn('status', ['Atendida', 'No asistió', 'Cancelada'])
+                // ->whereIn('status', ['Atendida', 'Cancelada'])
+                ->where('client_id', auth()->user()->id);
+        }
+
+        return view('dashboard.appointments.index', compact('confirmedAppointments', 'pendingAppointments', 'oldAppointments', 'role'));
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -56,6 +104,9 @@ class AppointmentController extends Controller
 
         return view('dashboard.appointments.create', compact('locations', 'services', 'barbers', 'intervals'));
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -122,7 +173,6 @@ class AppointmentController extends Controller
         }
 
 
-
         $data = $request->only(['barber_id', 'service_id', 'location_id', 'scheduled_date', 'scheduled_time', 'comments']);
         $data['client_id'] = auth()->id();
 
@@ -135,8 +185,11 @@ class AppointmentController extends Controller
 
         $notification = "La cita ha sido agendada correctamente";
 
-        return back()->with(compact('notification'));
+        return redirect('dashboard/appointments')->with(compact('notification'));
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -144,10 +197,14 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Appointment $appointment)
     {
-        //
+        $role = auth()->user()->role->name;
+
+        return view('dashboard.appointments.show', compact('appointment', 'role'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -181,5 +238,63 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+
+    /**
+     * Confirm the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function confirm(Appointment $appointment)
+    {
+        $appointment->status = 'Confirmada';
+        $appointment->save();
+
+        $notification = 'La cita ha sido confirmada correctamente';
+
+        return redirect('dashboard/appointments')->with(compact('notification'));
+    }
+
+
+
+
+    /**
+     * Cancel the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel(Appointment $appointment, Request $request)
+    {
+        if ($request->has('reason')) {
+            $cancellation = new CancelledAppointment();
+            $cancellation->reason = $request->input('reason');
+            $cancellation->cancelled_by_id = auth()->id();
+
+            $appointment->cancellation()->save($cancellation);
+        }
+
+        $appointment->status = 'Cancelada';
+        $appointment->save();
+
+        $notification = 'La cita ha sido cancelada correctamente';
+
+        return redirect('dashboard/appointments')->with(compact('notification'));
+    }
+
+
+    public function formCancel(Appointment $appointment)
+    {
+        if ($appointment->status == 'Confirmada') {
+            $role = auth()->user()->role->name;
+
+            return view('dashboard.appointments.cancel', compact('appointment', 'role'));
+        }
+
+        return redirect('dashboard/appointments');
     }
 }
