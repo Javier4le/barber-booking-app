@@ -60,7 +60,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Teléfono" type="text" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                <input class="form-control" placeholder="Teléfono" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="phone_number" autofocus>
                             </div>
                         </div>
                         <div class="form-group">

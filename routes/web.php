@@ -53,7 +53,11 @@ Route::middleware('auth')->group(function () {
     // Route::post('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'store']);
     // Route::get('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'index']);
 
-    Route::resource('dashboard/client/appointments', App\Http\Controllers\AppointmentController::class);
+    Route::post('/dashboard/appointments/{appointment}/confirm', [App\Http\Controllers\AppointmentController::class, 'confirm']);
+    Route::post('/dashboard/appointments/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'cancel']);
+    Route::get('/dashboard/appointments/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'formCancel']);
+    Route::resource('dashboard/appointments', App\Http\Controllers\AppointmentController::class);
+
 
 
 
