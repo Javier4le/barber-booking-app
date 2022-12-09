@@ -37,6 +37,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Rutas para el CRUD de Clientes
     Route::resource('dashboard/clients', App\Http\Controllers\Admin\ClientController::class);
+
+    // Rutas para Reportes
+    Route::get('/dashboard/reports/appointments/line', [App\Http\Controllers\Admin\ChartController::class, 'appointments']);
+    Route::get('/dashboard/reports/barbers/column', [App\Http\Controllers\Admin\ChartController::class, 'barbers']);
+
+    Route::get('/dashboard/reports/barbers/column/data', [App\Http\Controllers\Admin\ChartController::class, 'barbersJson']);
 });
 
 

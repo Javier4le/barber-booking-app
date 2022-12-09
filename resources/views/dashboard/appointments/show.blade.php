@@ -76,7 +76,7 @@
             @else
             <ul>
                 <li>
-                    La cita fue cacelada antes de su confirmación.
+                    La cita fue cancelada antes de su confirmación.
                 </li>
             </ul>
 
