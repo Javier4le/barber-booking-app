@@ -30,13 +30,13 @@
     <!-- Navigation -->
     <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
+            <a class="nav-link" href="{{ url('dashboard/reports/appointments/line') }}">
                 <i class="ni ni-calendar-grid-58 text-blue"></i> Citas
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
+            <a class="nav-link" href="{{ url('dashboard/reports/barbers/column') }}">
                 <i class="ni ni-chart-bar-32 text-warning"></i> Desempeño de Barberos
             </a>
         </li>

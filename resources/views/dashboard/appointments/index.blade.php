@@ -25,7 +25,11 @@
                 <li class="nav-item">
                     <a class="nav-link mb-sm-3 mb-md-0 active" data-toggle="tab" href="#mis-citas" role="tab" aria-selected="true">
                         <i class="ni ni-calendar-grid-58 mr-2"></i>
-                        Mis Citas
+                        @if ($role == 'admin')
+                          Citas Confirmadas
+                        @else
+                          Mis Citas
+                        @endif
                     </a>
                 </li>
                 <li class="nav-item">

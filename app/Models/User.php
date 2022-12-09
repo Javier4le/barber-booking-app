@@ -105,4 +105,25 @@ class User extends Authenticatable
     {
         return null !== $this->role()->whereIn('name', $roles)->first();
     }
+
+
+    public function asBarberAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id');
+    }
+
+    public function attendedAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id')->where('status', 'Atendida');
+    }
+
+    public function cancelledAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id')->where('status', 'Cancelada');
+    }
+
+    public function asClientAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'client_id');
+    }
 }

@@ -6,9 +6,10 @@
                     <th scope="col">Local</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
-                    @if ($role == 'barber')
+                    @if ($role == 'barber' || $role == 'admin')
                       <th scope="col">Cliente</th>
-                    @elseif ($role == 'client')
+                    @endif
+                    @if ($role == 'client' || $role == 'admin')
                       <th scope="col">Barbero</th>
                     @endif
                     <th scope="col">Servicio</th>
@@ -23,9 +24,10 @@
                     <th scope="row">{{ $appointment->location_id }}</th>
                     <td>{{ $appointment->scheduled_date }}</td>
                     <td>{{ $appointment->formatted_time }}</td>
-                    @if ($role == 'barber')
+                    @if ($role == 'barber' || $role == 'admin')
                       <td>{{ $appointment->client->first_name }} {{ $appointment->client->last_name }}</td>
-                    @elseif ($role == 'client')
+                    @endif
+                    @if ($role == 'client' || $role == 'admin')
                       <td>{{ $appointment->barber->first_name }} {{ $appointment->barber->last_name }}</td>
                     @endif
                     <td>{{ $appointment->service->name }}</td>
