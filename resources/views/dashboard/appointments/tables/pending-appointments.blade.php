@@ -20,7 +20,7 @@
             <tbody>
                 @foreach ($pendingAppointments as $appointment)
                 <tr>
-                    <th scope="row">{{ $appointment->location_id }}</th>
+                    <th scope="row">{{ $appointment->location->name ?? '' }}</th>
                     <td>{{ $appointment->scheduled_date }}</td>
                     <td>{{ $appointment->formatted_time }}</td>
                     @if ($role == 'barber' || $role == 'admin')

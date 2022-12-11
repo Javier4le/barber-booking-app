@@ -26,7 +26,8 @@ class UserUpdateRequest extends FormRequest
         return [
             'first_name' => 'required|string|min:3|max:255',
             'last_name' => 'nullable|string|min:3|max:255',
-            'phone' => 'required|numeric|regex:/\+569[0-9]{8}/',
+            // 'phone' => 'required|numeric|regex:/\+569[0-9]{8}/',
+            'phone' => 'nullable|string|min:9|max:13',
             'username' => 'required|string|min:3|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:8',
@@ -52,7 +53,9 @@ class UserUpdateRequest extends FormRequest
 
             'phone.required' => 'Es necesario ingresar un número de teléfono',
             'phone.numeric' => 'El campo de teléfono debe ser numérico',
-            'phone.regex' => 'El número de teléfono debe tener el formato +569XXXXXXXX, con sus 9 dígitos',
+            // 'phone.regex' => 'El número de teléfono debe tener el formato +569XXXXXXXX, con sus 9 dígitos',
+            'phone.min' => 'El número de teléfono debe tener como mínimo 9 caracteres',
+            'phone.max' => 'El número de teléfono debe tener como máximo 13 caracteres',
 
             'username.required' => 'Es necesario ingresar un nombre de usuario',
             'username.string' => 'El campo de nombre de usuario debe ser una cadena de caracteres',

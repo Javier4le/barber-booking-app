@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    return view('dashboard.profile.test');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -79,10 +83,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/api/schedule/hours', [App\Http\Controllers\Api\ScheduleController::class, 'hours']);
 
 
-
-
-
-
+    // Rutas para el CRUD de Perfil
+    Route::resource('dashboard/profile', App\Http\Controllers\ProfileController::class);
 
 });
 

@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="">
+<body class=" {{ request()->is('dashboard/profile*') ? 'bg-default' : '' }} ">
     <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
         <div class="container-fluid">
             <!-- Toggler -->
@@ -129,15 +129,43 @@
             </div>
         </nav>
         <!-- End Navbar -->
+
         <!-- Header -->
-        <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
-        </div>
+        @if ( request()->is('dashboard/profile*') )
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+                style="min-height: 500px; background-image: url({{ asset('assets/img/theme/profile-cover.jpg') }}); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10">
+                            <h1 class="display-2 text-white">¡Hola <span class="d-inline text-success">{{ '@' . auth()->user()->username }}</span>!</h1>
+                            <p class="text-white mt-0 mb-5">Esta es tu página de perfil. Puedes ver tu información personal y actualizarla.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator separator-bottom separator-skew zindex-100">
+                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
+                </div>
+            </div>
+        @else
+            <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6"></div>
+        @endif
+
         <div class="container-fluid mt--7">
             @yield('content')
+
             <!-- Footer -->
             @include('includes.panel.footer')
         </div>
+
     </div>
+
+
     <!--   Core   -->
     <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.j') }}s"></script>

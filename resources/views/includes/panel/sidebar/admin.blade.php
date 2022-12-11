@@ -9,6 +9,11 @@
             </a>
         </li> -->
 <li class="nav-item">
+    <a class="nav-link " href="{{ route('appointments.index') }}">
+        <i class="fas fa-clock text-info"></i> Citas
+    </a>
+</li>
+<li class="nav-item">
     <a class="nav-link " href="{{ url('/dashboard/clients') }}">
         <i class="ni ni-single-02 text-orange"></i> Clientes
     </a>
@@ -26,10 +31,5 @@
 <li class="nav-item">
     <a class="nav-link" href="{{ url('/dashboard/locations') }}">
         <i class="ni ni-shop text-info"></i> Locales
-    </a>
-</li>
-<li class="nav-item">
-    <a class="nav-link " href="{{ route('appointments.index') }}">
-        <i class="fas fa-clock text-info"></i> Citas
     </a>
 </li>

@@ -62,8 +62,10 @@
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <input type="text" name="description" id="description" value="{{ old('description') }}" class="form-control" placeholder="Descripción" required>
+                <textarea class="form-control" name="description" id="description"
+                  rows="5" type="text" placeholder="Describa lo que realiza el servicio..." required></textarea>
             </div>
+
             <button type="submit" class="btn btn-primary">Crear</button>
         </form>
     </div>

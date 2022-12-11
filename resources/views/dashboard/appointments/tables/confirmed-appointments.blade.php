@@ -13,7 +13,7 @@
                       <th scope="col">Barbero</th>
                     @endif
                     <th scope="col">Servicio</th>
-                    <th scope="col">Comentarios</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -21,7 +21,7 @@
             <tbody>
                 @foreach ($confirmedAppointments as $appointment)
                 <tr>
-                    <th scope="row">{{ $appointment->location_id }}</th>
+                    <th scope="row">{{ $appointment->location->name ?? '' }}</th>
                     <td>{{ $appointment->scheduled_date }}</td>
                     <td>{{ $appointment->formatted_time }}</td>
                     @if ($role == 'barber' || $role == 'admin')
@@ -31,8 +31,18 @@
                       <td>{{ $appointment->barber->first_name }} {{ $appointment->barber->last_name }}</td>
                     @endif
                     <td>{{ $appointment->service->name }}</td>
-                    <td>{{ $appointment->comments }}</td>
-                    <td>{{ $appointment->status }}</td>
+                    <td>{{ $appointment->formatted_price }}</td>
+                    <td>
+                        @if( $appointment->status == 'Cancelada' )
+                            <span class="badge badge-danger">Cancelada</span>
+                        @elseif( $appointment->status == 'Confirmada' )
+                            <span class="badge badge-info">Confirmada</span>
+                        @elseif( $appointment->status == 'Reservada' )
+                            <span class="badge badge-warning">Reservada</span>
+                        @elseif( $appointment->status == 'Atendida' )
+                            <span class="badge badge-success">Atendida</span>
+                        @endif
+                    </td>
                     <td>
                         @if ($role == 'admin')
                         <a href="{{ url('/dashboard/appointments/'.$appointment->id) }}" class="btn btn-sm btn-info" title="Ver cita">
