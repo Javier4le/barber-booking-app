@@ -21,10 +21,12 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
-        'phone_number',
+        'phone',
         'username',
         'email',
         'password',
+        'role_id',
+        'location_id',
     ];
 
     /**
@@ -35,6 +37,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'pivot',
     ];
 
     /**
@@ -45,4 +48,82 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the role that owns the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    /**
+     * Get the location that owns the user.
+     */
+    public function locations()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+
+    /**
+     * Get the services for the user.
+     */
+    public function services()
+    {
+        return $this->belongsToMany(Service::class)->withTimestamps();
+    }
+
+    /**
+     * Scope a query to only include users of a given role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $role
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBarbers($query)
+    {
+        return $query->where('role_id', 2);
+    }
+
+    /**
+     * Scope a query to only include users of a given role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $role
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeClients($query)
+    {
+        return $query->where('role_id', 3);
+    }
+
+    /**
+     * Check multiple roles
+     * @param array $roles
+     */
+    public function hasRoles($roles)
+    {
+        return null !== $this->role()->whereIn('name', $roles)->first();
+    }
+
+
+    public function asBarberAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id');
+    }
+
+    public function attendedAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id')->where('status', 'Atendida');
+    }
+
+    public function cancelledAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'barber_id')->where('status', 'Cancelada');
+    }
+
+    public function asClientAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'client_id');
+    }
 }
