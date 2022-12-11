@@ -19,7 +19,7 @@
             <tbody>
                 @foreach ($oldAppointments as $appointment)
                 <tr>
-                    <th scope="row">{{ $appointment->location_id }}</th>
+                    <th scope="row">{{ $appointment->location->name ?? '' }}</th>
                     <td>{{ $appointment->scheduled_date }}</td>
                     @if ($role == 'barber' || $role == 'admin')
                       <td>{{ $appointment->client->first_name }} {{ $appointment->client->last_name }}</td>
@@ -28,7 +28,17 @@
                       <td>{{ $appointment->barber->first_name }} {{ $appointment->barber->last_name }}</td>
                     @endif
                     <td>{{ $appointment->service->name }}</td>
-                    <td>{{ $appointment->status }}</td>
+                    <td>
+                        @if( $appointment->status == 'Cancelada' )
+                            <span class="badge badge-danger">Cancelada</span>
+                        @elseif( $appointment->status == 'Confirmada' )
+                            <span class="badge badge-info">Confirmada</span>
+                        @elseif( $appointment->status == 'Reservada' )
+                            <span class="badge badge-warning">Reservada</span>
+                        @elseif( $appointment->status == 'Atendida' )
+                            <span class="badge badge-success">Atendida</span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('appointments.show', $appointment->id) }}" class="btn btn-sm btn-info">Ver</a>
                     </td>

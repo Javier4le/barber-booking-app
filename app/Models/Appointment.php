@@ -20,7 +20,7 @@ class Appointment extends Model
         'comments',
     ];
 
-    public function local()
+    public function location()
     {
         return $this->belongsTo(Location::class);
     }
@@ -43,6 +43,11 @@ class Appointment extends Model
     public function getFormattedTimeAttribute()
     {
         return (new Carbon($this->scheduled_time))->format('g:i A');
+    }
+
+    public function getFormattedPriceAttribute()
+    {
+        return '$' . number_format($this->service->price, 0);
     }
 
     public function cancellation()

@@ -52,7 +52,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Apellido" type="text" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+                                <input class="form-control" placeholder="Apellido" type="text" name="last_name" value="{{ old('last_name') }}" autocomplete="last_name" autofocus>
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,7 +60,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Teléfono" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="phone_number" autofocus>
+                                <input class="form-control" placeholder="Teléfono" type="text" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                             </div>
                         </div>
                         <div class="form-group">

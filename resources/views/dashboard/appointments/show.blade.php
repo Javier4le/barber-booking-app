@@ -38,14 +38,19 @@
                 <strong>Servicio:</strong> {{ $appointment->service->name }}
             </dd>
             <dd>
-                <strong>Local:</strong> {{ $appointment->location_id }}
+                <strong>Local:</strong> {{ $appointment->location->name ?? '' }}
+                <span class="{{ $appointment->location->address ?? 'd-none' }}">{{ $appointment->location->address ?? '' }}</span>
             </dd>
             <dd>
                 <strong>Estado:</strong>
                 @if( $appointment->status == 'Cancelada' )
                     <span class="badge badge-danger">Cancelada</span>
-                @else
-                    <span class="badge badge-primary">{{ $appointment->status }}</span>
+                @elseif( $appointment->status == 'Confirmada' )
+                    <span class="badge badge-info">Confirmada</span>
+                @elseif( $appointment->status == 'Reservada' )
+                    <span class="badge badge-warning">Reservada</span>
+                @elseif( $appointment->status == 'Atendida' )
+                    <span class="badge badge-success">Atendida</span>
                 @endif
             </dd>
             <dd>

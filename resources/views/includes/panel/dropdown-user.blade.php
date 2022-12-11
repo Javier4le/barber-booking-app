@@ -2,11 +2,11 @@
     <div class=" dropdown-header noti-title">
         <h6 class="text-overflow m-0">Bienvenido {{ auth()->user()->first_name }}</h6>
     </div>
-    <a href="#" class="dropdown-item">
+    <a href="{{ route('profile.index') }}" class="dropdown-item">
         <i class="ni ni-single-02"></i>
         <span>Mi perfil</span>
     </a>
-    <a href="#" class="dropdown-item">
+    <!-- <a href="#" class="dropdown-item">
         <i class="ni ni-settings-gear-65"></i>
         <span>Configuración</span>
     </a>
@@ -17,7 +17,7 @@
     <a href="#" class="dropdown-item">
         <i class="ni ni-support-16"></i>
         <span>Ayuda</span>
-    </a>
+    </a> -->
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <i class="ni ni-user-run"></i>
