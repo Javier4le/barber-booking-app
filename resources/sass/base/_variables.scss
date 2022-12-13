@@ -1,0 +1,56 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$yellow: #f0b45b;
+$yellow-light: #fbe7c9;
+$light: #faf7f2;
+$dark: #12131b;
+$grey: #8e8e8e;
+$grey-light: #c2c2c2;
+// $green: #4ad295;
+$green: #39da8a;
+$white: #fff;
+
+
+// Images
+$logo: url('../../../public/assets/img/brand/Logo.png');
+$hero: url('../../../public/assets/img/home/hero.jpg');
+
+
+
+// Mixins
+
+// Button
+
+// Title
+// @mixin title($color-h2, $text-align, $size-h1: 1.2rem, $size-h2: 2.5rem) {
+//    text-align: $text-align;
+//    h1 {
+//       margin-top: 0;
+//       font-style: italic;
+//       font-size: $size-h1;
+//       font-weight: 500;
+//       color: $yellow;
+//    }
+//    h2 {
+//       font-size: $size-h2;
+//       font-weight: 700;
+//       color: $color-h2;
+//    }
+// }
+
+// Paragraph
+// @mixin text($color, $text-align, $width: 100%) {
+//    margin: 30px 0 50px;
+//    width: $width;
+//    line-height: 1.8;
+//    color: $color;
+//    overflow-wrap: break-word;
+//    text-align: $text-align;
+// }
