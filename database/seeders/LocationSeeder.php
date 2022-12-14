@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Location;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -33,8 +35,9 @@ class LocationSeeder extends Seeder
             ],
         ];
 
+        // Crea locales
         foreach ($locations as $location) {
-            Location::create($location);
+            $location = Location::create($location);
         }
     }
 }

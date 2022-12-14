@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Service;
+use Termwind\Components\Dd;
 
 class BarberController extends Controller
 {
@@ -39,9 +40,21 @@ class BarberController extends Controller
     public function create()
     {
         $locations = Location::all();
-        $services = Service::all();
+        $locationId = old('location_id');
 
-        return view('dashboard.barbers.create', compact('services', 'locations'));
+        if ($locationId) {
+            $location = Location::find($locationId);
+            $services = $location->services;
+        } else {
+            $services = collect();
+        }
+
+
+        // servicios seleccionados
+        $servicesSelected = old('services[]') ? Service::find(old('services[]')) : collect();
+
+
+        return view('dashboard.barbers.create', compact('locations', 'services'));
     }
 
     /**
@@ -59,11 +72,12 @@ class BarberController extends Controller
                 //'password' => bcrypt($request->password),
                 'password' => bcrypt($request->input('password')),
                 'role_id' => 2,
-                'location_id' => $request['location']
             ]
         );
 
-        $barber->services()->attach($request->input('services'));
+        // para relacionarlos juntos en una sola linea de codigo
+        $barber->services()->attach($request->input('services'), ['location_id' => $request->input('location_id')]);
+
 
         $notification = 'El barbero se ha registrado correctamente.';
 
@@ -91,10 +105,13 @@ class BarberController extends Controller
     {
         $barber = User::barbers()->findOrFail($id);
         $locations = Location::all();
-        $services = Service::all();
-        $barberServices = $barber->services()->pluck('services.id');
 
-        return view('dashboard.barbers.edit', compact('barber', 'locations', 'services', 'barberServices'));
+        $services = $barber->services;
+
+        $barberServices = $barber->services->pluck('id')->toArray();
+        $barberLocation = $barber->locations->pluck('id')->toArray();
+
+        return view('dashboard.barbers.edit', compact('barber', 'locations', 'services', 'barberServices', 'barberLocation'));
     }
 
     /**
@@ -106,25 +123,30 @@ class BarberController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        // dd($request['location']);
-
         $validated = $request->validated();
 
         $barber = User::barbers()->findOrFail($id);
 
         $data = $request->only('first_name', 'last_name', 'phone', 'username', 'email');
         $password = $request->input('password');
-        $location = $request['location'];
 
         if ($password) {
             $data['password'] = bcrypt($password);
         }
 
-        $data['location_id'] = $location;
-
         $barber->fill($data);
         $barber->save();
-        $barber->services()->sync($request->input('services'));
+
+
+        $locationId = $request->input('location_id');
+        $sevices = [];
+
+        foreach ($request->input('services') as $serviceId) {
+            $sevices[$serviceId] = ['location_id' => $locationId];
+        }
+
+        $barber->services()->sync($sevices);
+
 
         $notification = 'El barbero se ha actualizado correctamente.';
 
