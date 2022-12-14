@@ -58,16 +58,17 @@ Route::middleware(['auth', 'barber'])->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    // Rutas para reservar citas
-    // Route::get('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'create']);
-    // Route::post('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'store']);
-    // Route::get('/dashboard/client/appointments', [App\Http\Controllers\AppointmentController::class, 'index']);
 
+    // Rutas para el CRUD de Perfil
+    Route::resource('dashboard/profile', App\Http\Controllers\ProfileController::class);
+
+    // Rutas para el estado de Citas
     Route::post('/dashboard/appointments/{appointment}/confirm', [App\Http\Controllers\AppointmentController::class, 'confirm']);
     Route::post('/dashboard/appointments/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'cancel']);
     Route::get('/dashboard/appointments/{appointment}/cancel', [App\Http\Controllers\AppointmentController::class, 'formCancel']);
-    Route::resource('dashboard/appointments', App\Http\Controllers\AppointmentController::class);
 
+    // Rutas para el CRUD de Citas
+    Route::resource('dashboard/appointments', App\Http\Controllers\AppointmentController::class);
 
 
 
@@ -76,15 +77,14 @@ Route::middleware('auth')->group(function () {
     // Route::get('/api/services/{service}/barbers', [App\Http\Controllers\Api\ServiceController::class, 'barbers']);
     // Route::get('/api/location/{location}/services', [App\Http\Controllers\Api\LocationController::class, 'services']);
 
-    // JSON para obtener los barberos de un local y servicio seleccionado
+
+    // JSON para obtener los servicios de un local seleccionado
+    Route::get('/api/locations/{location}/services', [App\Http\Controllers\Api\LocationController::class, 'services']);
+
+    // JSON para obtener los barberos de un servicio seleccionado
     Route::get('/api/services/{service}/barbers', [App\Http\Controllers\Api\ServiceController::class, 'barbers']);
-    // Route::get('/api/locations/{location}/services/{service}/barbers', [App\Http\Controllers\Api\LocationController::class, 'barbers']);
 
+    // JSON para obtener las horas disponibles de un barbero
     Route::get('/api/schedule/hours', [App\Http\Controllers\Api\ScheduleController::class, 'hours']);
-
-
-    // Rutas para el CRUD de Perfil
-    Route::resource('dashboard/profile', App\Http\Controllers\ProfileController::class);
-
 });
 

@@ -1,4 +1,4 @@
-let $barber, $date, $service, iRadio;
+let $barber, $date, $service, $location, iRadio;
 let $hoursMorning, $hoursAfternoon, $titleMorning, $titleAfternoon;
 
 const titleMorning = `
@@ -18,6 +18,7 @@ const noHours = `
 $(function() {
     $barber = $('#barber');
     $date = $('#date');
+    $location = $('#location');
     $service = $('#service');
 
     $hoursMorning = $('#hours-morning');
@@ -26,16 +27,39 @@ $(function() {
     $titleAfternoon = $('#title-afternoon');
 
 
-    $service.change(() => {
-        const serviceId = $service.val();
-        // const url = `/dashboard/client/${serviceId}/barbers`;
-        const url = `/api/services/${serviceId}/barbers`;
-        $.getJSON(url, onBarbersLoaded);
+    // cargar servicios segun la locacion y barberos segun el servicio en una misma funcion
+
+
+    // Load services when location changes and barbers when service changes
+
+    $location.change(() => {
+        let locationId = $location.val();
+        const url = `/api/locations/${locationId}/services`;
+        $.getJSON(url, onServicesLoaded);
+
+        $service.change(() => {
+            let serviceId = $service.val();
+            const urlBarbers = `/api/services/${serviceId}/barbers`;
+            $.getJSON(urlBarbers, onBarbersLoaded);
+        });
     });
+
 
     $barber.change(loadAvailableHours);
     $date.change(loadAvailableHours);
 })
+
+
+function onServicesLoaded(services) {
+    let htmlOptions = '<option value="">Seleccione un servicio</option>';
+
+    services.forEach(service => {
+        htmlOptions += `<option value="${service.id}">${service.name} (${service.duration} min. -  $${service.price})</option>`;
+    });
+
+    $service.html(htmlOptions);
+};
+
 
 
 function onBarbersLoaded(barbers) {
@@ -104,41 +128,3 @@ function getRadioIntervalHTML(interval) {
                 <label class="custom-control-label" for="interval_${iRadio++}">${text}</label>
             </div>`;
 }
-
-
-
-
-
-// cargar barberos por local y servicio
-// $('#location').on('change', function() {
-//     let location_id = $(this).val();
-//     let service_id = $('#service').val();
-
-//     if (location_id && service_id) {
-//         $.get(`/api/locations/${location_id}/services/${service_id}/barbers`, function(data) {
-//             let htmlOptions = '<option value="">Seleccione un barbero</option>';
-//             data.forEach(barber => {
-//                 htmlOptions +=  `<option value="${barber.id}">${barber.first_name} ${barber.last_name ?? ''}</option>`;
-//             });
-//             $barber.html(htmlOptions);
-//         });
-//     }
-// });
-
-
-
-// // cargar barberos por servicio y local
-// $('#service').on('change', function() {
-//     let service_id = $(this).val();
-//     let local_id = $('#local').val();
-
-//     if (service_id && local_id) {
-//         $.get('/api/locations/' + local_id + '/services/' + service_id + '/barbers', function(data) {
-//             let htmlOptions = '<option value="">Seleccione un barbero</option>';
-//             data.forEach(barber => {
-//                 htmlOptions +=  `<option value="${barber.id}">${barber.first_name} ${barber.last_name ?? ''}</option>`;
-//             });
-//             $barber.html(htmlOptions);
-//         });
-//     }
-// });

@@ -2,6 +2,11 @@
     <div class=" dropdown-header noti-title">
         <h6 class="text-overflow m-0">Bienvenido {{ auth()->user()->first_name }}</h6>
     </div>
+    <a href="{{ url('/') }}" class="dropdown-item">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </a>
+
     <a href="{{ route('profile.index') }}" class="dropdown-item">
         <i class="ni ni-single-02"></i>
         <span>Mi perfil</span>
