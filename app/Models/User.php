@@ -26,7 +26,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'location_id',
     ];
 
     /**
@@ -62,7 +61,7 @@ class User extends Authenticatable
      */
     public function locations()
     {
-        return $this->belongsTo(Location::class, 'location_id');
+        return $this->belongsToMany(Location::class, 'location_service_user')->withTimestamps();
     }
 
     /**
@@ -70,7 +69,7 @@ class User extends Authenticatable
      */
     public function services()
     {
-        return $this->belongsToMany(Service::class)->withTimestamps();
+        return $this->belongsToMany(Service::class, 'location_service_user')->withTimestamps();
     }
 
     /**

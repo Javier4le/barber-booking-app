@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="description">Descripción</label>
                 <textarea class="form-control" name="description" id="description" value="{{ old('description', $service->description) }}"
-                  rows="5" type="text" placeholder="Describa lo que realiza el servicio..." required></textarea>
+                  rows="5" type="text" placeholder="Describa lo que realiza el servicio..." required> {{ old('description', $service->description) }} </textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>

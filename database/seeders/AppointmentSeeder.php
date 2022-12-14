@@ -15,7 +15,7 @@ class AppointmentSeeder extends Seeder
      */
     public function run()
     {
-
+        // Crea 100 citas según el modelo Appointment y el factory AppointmentFactory
         Appointment::factory()->count(100)->create();
     }
 }

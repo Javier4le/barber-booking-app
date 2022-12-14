@@ -57,20 +57,15 @@
                 <input type="text" name="last_name" id="last_name" value="{{ old('last_name', $barber->last_name) }}" class="form-control" placeholder="Apellido del barbero">
             </div>
 
-
-
-
             <div class="form-group">
                 <label for="location">Local</label>
-                <select name="location" id="location" class="form-control" required>
+                <select name="location_id" id="location" class="form-control" required>
                     <option value="">Seleccione un local</option>
                     @foreach ($locations as $location)
-                        <option value="{{ $location->id }}" {{ old('location', $barber->location_id) == $location->id ? 'selected' : '' }}>{{ "$location->name ($location->address)" }}</option>
+                        <option value="{{ $location->id }}" {{ old('location_id', $barber->location_id) == $location->id ? 'selected' : '' }}>{{ $location->name }}</option>
                     @endforeach
                 </select>
             </div>
-
-
 
             <div class="form-group">
                 <label for="services">Servicios</label>
@@ -80,6 +75,8 @@
                     @endforeach
                 </select>
             </div>
+
+
             <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="text" name="phone" id="phone"  value="{{ old('phone', $barber->phone) }}" class="form-control" placeholder="Teléfono" required>
@@ -109,6 +106,9 @@
 
     <script>
         $(document).ready(function() {});
+        $('#location').selectpicker('val', @json($barberLocation));
         $('#services').selectpicker('val', @json($barberServices));
     </script>
+
+    <script src=" {{ asset('assets/js/barbers/create-edit.js') }} "></script>
 @endsection
