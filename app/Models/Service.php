@@ -15,6 +15,14 @@ class Service extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class)->withTimestamps();
+        return $this->belongsToMany(User::class, 'location_service_user')->withTimestamps();
+    }
+
+    /**
+     * Get the location that owns the service.
+     */
+    public function location()
+    {
+        return $this->belongsToMany(Location::class, 'location_service_user')->withTimestamps();
     }
 }
