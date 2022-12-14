@@ -47,10 +47,10 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="location">Local</label>
-                    <select name="location" id="location" class="form-control" required>
+                    <select name="location_id" id="location" class="form-control" required>
                         <option value="">Seleccione un local</option>
                         @foreach ($locations as $location)
-                            <option value="{{ $location->id }}" {{ old('location') == $location->id ? 'selected' : '' }}>
+                            <option value="{{ $location->id }}" {{ old('location_id') == $location->id ? 'selected' : '' }}>
                                 {{ "$location->name ($location->address)" }}
                             </option>
                         @endforeach
@@ -58,18 +58,18 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="service">Servicio</label>
-                    <select name="service_id" id="service" class="form-control" required>
+                    <select name="service_id" id="service" class="form-control" required  @if (old('location_id')) disabled @endif>
                         <option value="">Seleccione un servicio</option>
                         @foreach ($services as $service)
                             <option value="{{ $service->id }}" {{ old('service_id') == $service->id ? 'selected' : '' }}>
-                                {{ $service->name }}
+                                {{ "$service->name $($service->price)" }}
                             </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="barber">Barbero</label>
-                    <select name="barber_id" id="barber" class="form-control" required>
+                    <select name="barber_id" id="barber" class="form-control" required  {{ ('service_id') == null ? 'disabled' : '' }}>
                         <option value="">Seleccione un barbero</option>
                         @foreach ($barbers as $barber)
                             <option value="{{ $barber->id }}" {{ old('barber_id') == $barber->id ? 'selected' : '' }}>

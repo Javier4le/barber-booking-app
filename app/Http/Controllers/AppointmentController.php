@@ -81,17 +81,31 @@ class AppointmentController extends Controller
     public function create(ScheduleServiceInterface $scheduleServiceInterface)
     {
         $locations = Location::all();
-        $services = Service::all();
+        $locationId = old('location_id');
+
+        if ($locationId) {
+            $location = Location::find($locationId);
+            $services = $location->services;
+        } else {
+            $services = collect();
+        }
+
 
         $serviceId = old('service_id');
 
+        // si existe el servicio seleccionado
         if ($serviceId) {
+            // se busca el servicio
             $service = Service::find($serviceId);
             // $barbers = User::where('role_id', 2)->get();
+
+            // y se obtienen los barberos que prestan el servicio
             $barbers = $service->users;
         } else {
+            // si no existe el servicio no se obtienen barberos
             $barbers = collect();
         }
+
 
         $date = old('scheduled_date');
         $barberId = old('barber_id');
@@ -121,7 +135,7 @@ class AppointmentController extends Controller
         $rules = [
             'barber_id' => 'required|exists:users,id',
             'service_id' => 'required|exists:services,id',
-            // 'location_id' => 'required|exists:locations,id',
+            'location_id' => 'required|exists:locations,id',
             // 'scheduled_date' => 'required|date_format:"Y-m-d"',
             'scheduled_time' => 'required',
             'comments' => 'nullable|string',
@@ -134,8 +148,8 @@ class AppointmentController extends Controller
             'service_id.required' => 'Es necesario seleccionar un servicio',
             'service_id.exists' => 'El servicio seleccionado no existe',
 
-            // 'location_id.required' => 'Es necesario seleccionar una ubicación',
-            // 'location_id.exists' => 'La ubicación seleccionada no existe',
+            'location_id.required' => 'Es necesario seleccionar un local',
+            'location_id.exists' => 'El local seleccionada no existe',
 
             // 'scheduled_date.required' => 'Es necesario seleccionar una fecha',
             // 'scheduled_date.date_format' => 'El formato de la fecha es incorrecto',

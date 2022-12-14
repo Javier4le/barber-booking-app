@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::all();
+        $locations = Location::paginate(10);
         return view('dashboard.locations.index', compact('locations'));
     }
 
@@ -37,21 +37,6 @@ class LocationController extends Controller
      */
     public function store(LocationRequest $request)
     {
-        // $rules = [
-        //     'address' => 'required|string|max:100',
-        //     'phone' => 'required|numeric|digits:9',
-        // ];
-
-        // $messages = [
-        //     'address.required' => 'Es necesario ingresar una dirección',
-
-        //     'phone.required' => 'Es necesario ingresar un número de teléfono',
-        //     'phone.numeric' => 'El campo de teléfono debe ser numérico',
-        //     'phone.digits' => 'El número de teléfono debe tener 9 dígitos',
-        // ];
-
-        // $this->validate($request, $rules, $messages);
-
         $validated = $request->validated();
 
         $location = new Location();
@@ -97,21 +82,6 @@ class LocationController extends Controller
      */
     public function update(LocationRequest $request, Location $location)
     {
-        // $rules = [
-        //     'address' => 'required|string|max:100',
-        //     'phone' => 'required|numeric|digits:9',
-        // ];
-
-        // $messages = [
-        //     'address.required' => 'Es necesario ingresar una dirección',
-
-        //     'phone.required' => 'Es necesario ingresar un número de teléfono',
-        //     'phone.numeric' => 'El campo de teléfono debe ser numérico',
-        //     'phone.digits' => 'El número de teléfono debe tener 9 dígitos',
-        // ];
-
-        // $this->validate($request, $rules, $messages);
-
         $validated = $request->validated();
 
         $location->name = $request->name;
